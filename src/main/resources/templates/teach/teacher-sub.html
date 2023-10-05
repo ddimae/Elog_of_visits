@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Призначення дисциплін</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+  <h1>Назначити викладачу дисципліну</h1>
+  <div>
+    <form action="/teacher/sub" th:object="${tea}" method="post">
+      <input type="hidden" th:field="*{id_teacher}" th:value="${tea.id_teacher}">
+      <div>
+        <input type="text" th:field="*{name_teacher}" class="form-control"><br>
+      </div>
+
+      <div class="list-group">
+        <label class="list-group-item"  th:each="g : ${subj}">
+          <input class="form-check-input me-1" type="checkbox"
+                 th:field="*{subjectList}"
+                 th:value="${g.id_sub}"
+                 th:text="${g.name_sub}">
+        </label>
+      </div>
+
+      <div class="list-group">
+        <label class="list-group-item"  th:each="g : ${groupsIterable}">
+          <input class="form-check-input me-1" type="checkbox" th:field="*{groupsList}"
+                 th:value="${g.id_group}" th:text="${g.num_group1}">
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-success">Змінити данні</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

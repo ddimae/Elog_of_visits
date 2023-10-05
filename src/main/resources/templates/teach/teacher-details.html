@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Список викладачів</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+
+    <div th:each="el : ${teacher}" class="alert alert-info mt-2">
+        <h1 th:text="${el.name_teacher}"></h1>
+        <label><h4>Дисципліни:</h4></label>
+        <p th:text="${el.subjectList}"></p>
+        <label><h4>Групи:</h4></label>
+        <p th:text="${el.groupsList}"></p>
+        <a th:href="'/teacher/' + ${el.id_teacher} + '/sub'"
+           class="btn btn-warning">Назначити дисципліну та групу</a><br><br>
+        <a th:href="'/teacher/' + ${el.id_teacher} + '/edit'"
+           class="btn btn-warning">Редагувати</a><br><br>
+        <form th:action="'/teacher/' + ${el.id_teacher} + '/remove'" method="post">
+            <button class="btn btn-warning" type="submit">Видалити</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

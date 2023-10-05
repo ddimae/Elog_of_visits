@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Нова група</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+  <h1>Нова група</h1>
+  <form action="/group/create" method="post">
+    <input type="text" name="num_group1" placeholder="Введіть номер групи" class="form-control"><br>
+    <button type="submit" class="btn btn-success">Додати данні</button>
+  </form>
+</div>
+
+</body>
+</html>

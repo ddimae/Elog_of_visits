@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Редагування</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+    <h1>Редагування</h1>
+    <div>
+        <form action="/stud/edit" th:object="${stud}" method="post">
+            <input type="hidden" th:field="*{id_student}" th:value="${stud.id_student}">
+            <div>
+                <input type="text" th:field="*{name_student}" class="form-control"><br>
+                <textarea th:text="*{description}" class="form-control"/><br>
+            </div>
+
+            <div>
+                <label>Група:</label>
+                <div>
+                    <select th:field = "*{groups}" class="form-control">
+                        <th:block th:each = "gl : ${groupsIter}">
+                            <option th:text="${gl.num_group1}" th:value="${gl.id_group}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div><br>
+            <button type="submit" class="btn btn-success">Змінити данні</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

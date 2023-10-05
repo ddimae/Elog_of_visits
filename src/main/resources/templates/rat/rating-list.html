@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Оцінки</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1>Оцінки</h1>
+    <div>
+        <a th:href="'/rating/create'" class="btn btn-warning">Виставити оцінку</a><br><br>
+    </div>
+    <div>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Дисципліна</th>
+                    <th scope="col">Група</th>
+                    <th scope="col">Студент</th>
+                    <th scope="col">Оцінка</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="st, state : ${ratings}">
+                    <td th:text="${state.count}"></td>
+                    <td th:text="${st.subject}"></td>
+                    <td th:text="${st.student.groups}"></td>
+                    <td th:text="${st.student}"></td>
+                    <td th:text="${st.grade}"></td>
+                    <td th:text="${st.date}"></td>
+                    <td>
+                        <a th:href="@{'/rating/delete/' + ${st.id_rating}}">Видалити</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

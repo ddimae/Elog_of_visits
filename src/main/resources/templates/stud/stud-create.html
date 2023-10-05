@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Новий студент</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css ">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+    <h1>Новий студент</h1>
+    <form action="/stud/create" th:object="${student}" method="post">
+            <input type="text" name="name_student" placeholder="Введіть Прізвище ІП" class="form-control"><br>
+            <textarea name="description" placeholder="Додаткові данні" class="form-control"></textarea><br>
+        <div>
+            <label>Групи:</label>
+            <div>
+                <select th:field = "*{groups}" class="form-control">
+                    <th:block th:each = "gr : ${groupsList}">
+                        <option th:text="${gr.num_group1}" th:value="${gr.id_group}"></option>
+                    </th:block>
+                </select>
+            </div>
+        </div><br>
+        <button type="submit" class="btn btn-success">Додати данні</button>
+    </form>
+</div>
+
+</body>
+</html>
